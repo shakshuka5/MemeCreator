@@ -1,0 +1,49 @@
+  
+  header{
+    background-color: #252525;
+    height: 130px;
+    border-bottom:solid #181818 6px;  
+    }
+    
+
+
+.logo{
+  font-family: eurofurence;
+    font-size: 40px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.nav-selected-color{
+    color: #58c93a;
+}
+
+.nav-bar{
+    // height:100%;
+    display: flex;
+}
+
+.menue-item{
+    width: 130px;
+    height:130px;
+    padding:0px 18px;
+    flex: 1 1 130px;
+    color: #ffffff;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 700;
+    border-left: 1px solid #181818;
+        border-bottom:6px solid #181818;
+        border-top:6px solid transparent;
+    transition: 0.5s;
+     &:hover {
+        color:#58c93a;
+        border-bottom:6px solid #58c93a;
+} 
+&:last-child {
+      border-right: 1px solid #181818;
+    }
+}
+
+
+

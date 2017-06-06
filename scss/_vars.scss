@@ -1,0 +1,19 @@
+$container-width: 980px; //CLEAN
+$mobile-breakpoint: 642px; //CLEAN
+
+$mobile-screen-width: 700px;
+
+:root {
+  /* Layout */
+  --container-width: $container-width;
+  --inner-container-width: 900px;
+  /* Fonts */
+  --primary-font: Playfair;
+  --secondary-font: Ubuntu;
+  /* Colors */
+  --main-color: #626262;
+  --sections-bg: #f0f0f0;
+  --post-meta-color: #b5aea0;
+}
+
+

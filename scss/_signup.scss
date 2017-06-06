@@ -1,0 +1,23 @@
+.signup {
+  height: 287px;
+  background: var(--sections-bg);
+  h2 {
+    font-size: rem(30px);
+    margin-bottom: 60px;
+  }
+  form {
+    border-bottom: 1px solid #000;
+  }
+  input {
+    border: none;
+    background-color: transparent;
+    padding: 0.7em 0.7em 0.7em 0;
+    font-size: rem(14px);
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}

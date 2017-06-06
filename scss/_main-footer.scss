@@ -1,0 +1,7 @@
+.main-footer {
+  background-color: var(--sections-bg);
+  height: 100px;
+  li:not(:last-child) {
+    margin-right: 1em;
+  }
+}
