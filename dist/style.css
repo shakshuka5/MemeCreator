@@ -2,12 +2,6 @@
 .clean-list {
   list-style: none; }
 
-.img-responsive {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  width: 100%; }
-
 /*----------  Playfair Font  ----------*/
 @font-face {
   font-family: 'eurofurence';
@@ -134,39 +128,6 @@ header {
   .menue-item:last-child {
     border-right: 1px solid #181818; }
 
-.primary-post h3, .post h3 {
-  margin-bottom: 28px; }
-
-.primary-post h1, .post h1 {
-  margin-bottom: 34px;
-  font-weight: 400; }
-
-.primary-post p, .post p {
-  font-size: 0.875rem;
-  line-height: 1.8;
-  letter-spacing: 0.6px; }
-  .primary-post p:nth-of-type(1), .post p:nth-of-type(1) {
-    margin-bottom: 52px; }
-
-.primary-post .meta-data, .post .meta-data {
-  font-weight: 400;
-  font-family: var(--secondary-font);
-  color: var(--post-meta-color);
-  text-transform: uppercase;
-  font-size: 0.875rem; }
-
-.posts-container {
-  margin-top: 8.4375em; }
-
-.post {
-  flex: 0 1 calc(50% - 2em); }
-  @media (max-width: 642px) {
-    .post {
-      flex: 1 1 100%; } }
-
-.main-post-img {
-  margin-bottom: 6.25em; }
-
 .signup {
   height: 287px;
   background: var(--sections-bg); }
@@ -192,9 +153,38 @@ header {
     margin-right: 1em; }
 
 .gallery-section {
+  width: 700px;
+  background-color: lightgoldenrodyellow;
+  border: 1px solid grey;
+  padding: 10px;
+  margin: 1.25em auto;
+  min-height: 500px;
+  overflow: hidden; }
+  @media (max-width: 700px) {
+    .gallery-section {
+      flex: 1 1 100%; } }
+  .gallery-section img {
+    margin-top: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    min-width: 300px; }
+
+.search-section {
+  padding: 5px;
+  min-height: 30px;
+  background-color: yellowgreen;
+  border-bottom: 1px solid grey;
   width: 100%;
-  height: 200px;
-  background-color: red; }
+  text-align: center;
+  font: var(--secondary-font); }
+
+.button {
+  height: 48px;
+  width: 48px;
+  border-radius: 10px; }
 
 .image-editor {
   width: 100%;
@@ -202,96 +192,13 @@ header {
   background-color: blue; }
 
 .main-container {
-  width: 700px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   height: auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center; }
-
-.load-more {
-  height: 150px; }
-  .load-more button {
-    border: 1px solid black;
-    background-color: transparent;
-    padding: 1em 1.5em;
-    font-size: 1.25rem;
-    font-family: var(--primary-font);
-    color: var(--main-color);
-    cursor: pointer;
-    transition: all 0.5s; }
-    .load-more button:hover {
-      color: #161616; }
-
-.posts-zone {
-  border-right: 1px solid #c3c3c3;
-  border-left: 1px solid #c3c3c3; }
-
-.post-item {
-  padding-top: 80px;
-  max-width: 100%; }
-  @media (max-width: 780px) {
-    .post-item {
-      flex-direction: column; }
-      .post-item .post-data {
-        padding-left: 0px; }
-      .post-item .post-data {
-        margin-top: 20px; } }
-
-.image-container {
-  flex: 1; }
-  .image-container .post-image {
-    width: 100%;
-    height: auto; }
-
-.post-data {
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 10px; }
-  .post-data h2 {
-    margin: 0; }
-  .post-data p {
-    margin-top: 10px; }
-
-.post-title {
-  margin-top: 0px;
-  color: #4f4e4e;
-  font-family: Lato;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 30px;
-  text-transform: uppercase; }
-
-.post-text {
-  color: #606060;
-  font-family: Lato;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px; }
-
-.post-button {
-  width: 186px;
-  height: 40px;
-  border: 2px solid #c3c3c3;
-  background-color: #ffffff;
-  border-radius: 20px 20px 20px 20px;
-  color: #c2c1c1;
-  font-family: Lato;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  transition: 0.2s; }
-  .post-button .arrow-right {
-    display: none;
-    margin-left: 15px; }
-  .post-button:hover {
-    width: 210px;
-    border: 2px solid #58c93a;
-    color: #58c93a; }
-    .post-button:hover .arrow-right {
-      display: initial; }
 
 .navigation {
   margin: 0;

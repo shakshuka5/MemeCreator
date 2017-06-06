@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Blogin.</title>
+  <title>Meme Generator</title>
   <link rel="stylesheet" href="dist/style.css">
 </head>
 
@@ -13,7 +13,7 @@
     <nav class="flex container space-between align-center">
 
       <logo class="logo">
-        <a href="#">Memgen</a>
+        <a href="#">Memegen</a>
       </logo>
 
       <navBar class="flex nav-bar">
@@ -26,25 +26,32 @@
   <div class="main-container">
 
 
-    <div class="image-editor">
-
+    <div hidden class="image-editor">
+        
       <!--<img src="assets/image2.png" alt="" class="placeholdeimage">-->
 
     </div>
 
-    <div class="gallery-section">
-
-      <!--<img src="assets/image3.png" alt="" class="placeholdeimage">-->
-
+    <div class="gallery-section flex align-center justify-center flex-wrap">
+      <div class="search-section">
+        <label>Search:</label>
+        <input type="text" name="search" placeholder="type here for images key words...">
+        <button onclick="searchImage()">go</button>
+    </div>
+      <img src="assets/4.png" alt="image1" onclick="imageClicked(1)">
+      <img src="assets/6.png" alt="image1" onclick="imageClicked(2)">
+      <img src="assets/3.jpg" alt="image1" onclick="imageClicked(3)">
+      <img src="assets/7.jpg" alt="image1" onclick="imageClicked(4)">
     </div>
   </div>
+
   <footer class="footer-class flex">
     <div class="footer-content flex">
 
 
-      <div class="logo"><a href="#">Memgen<span class="nav-selected-color">.</span></a></div>
+      <div class="logo"><a href="#">Memegen<span class="nav-selected-color">.</span></a></div>
 
-      <p class="all-rights"> © 2017 Memgen.me - All Rights Reserved </p>
+      <p class="all-rights"> © 2017 Memegen.me - All Rights Reserved </p>
 
       <div class="socials flex">
         <a class="socials-facebook social-icons flex align-center justify-center" href="#"><img src="assets/fb.png"></a>
@@ -58,6 +65,12 @@
   </div>
 
 
+<script src="js/main.js"></script>
+<script>
+  // window.addEventListener('input', function (e) {
+  //   console.log("keyup event detected! coming from this element:", e.target.value);
+  //   }, false);
+</script>
 </body>
 
 </html>
