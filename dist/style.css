@@ -182,13 +182,30 @@ header {
   background-color: yellowgreen;
   border-bottom: 1px solid grey;
   width: 100%;
-  text-align: center;
+  text-align: left;
+  padding: 10px;
   font: var(--secondary-font); }
 
 .button {
   height: 48px;
   width: 48px;
   border-radius: 10px; }
+
+.searchBox {
+  font-family: cursive; }
+
+.keywords-box {
+  border: 1px solid grey;
+  height: 100px;
+  border-radius: 10px; }
+
+.key-word {
+  margin-right: 20px;
+  cursor: pointer; }
+
+.touch-btn {
+  height: 48px;
+  width: 48px; }
 
 .image-editor {
   width: 100%;

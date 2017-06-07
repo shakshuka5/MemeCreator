@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="dist/style.css">
 </head>
 
-<body>
+<body onload="initPage()">
 
   <header>
     <nav class="flex container space-between align-center">
@@ -56,15 +56,20 @@
     <div class="gallery-section flex align-center justify-center flex-wrap">
       <div class="search-section">
         <label>Search:</label>
-        <input type="text" name="search" placeholder="type here for images key words...">
-        <button onclick="searchImage()">go</button>
+        <input class="search-box" type="text" name="search" placeholder="type here for images key words...">
+        <!--<div>
+          <label>Insert image url:</label>
+          <input class="url-box" type="text" name="imageUrl" placeholder="type here for image url...">
+        </div>-->
+
+        <div class="keyords-box">
+          <button class="touch-btn" onclick="setKeywordSearch(0)">search Keywords</button>
+        </div>
+        
       </div>
-      <div class="images-container gallery-section flex align-center justify-center flex-wrap"> 
-        <img src="assets/4.png" alt="image1" onclick="imageClicked(1)">
-        <img src="assets/6.png" alt="image1" onclick="imageClicked(2)">
-        <img src="assets/3.jpg" alt="image1" onclick="imageClicked(3)">
-        <img src="assets/7.jpg" alt="image1" onclick="imageClicked(4)">
-      </div>
+      
+      <!--images inserted in js-->
+      <div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>
       
     </div>
   </div>
@@ -90,11 +95,7 @@
 
 
   <script src="js/main.js"></script>
-  <script>
-    // window.addEventListener('input', function (e) {
-  //   console.log("keyup event detected! coming from this element:", e.target.value);
-  //   }, false);
-  </script>
+  
 </body>
 
 </html>

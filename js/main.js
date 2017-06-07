@@ -1,33 +1,155 @@
 'use strict'
 
-var gImgs = [{ id: 0, url: 'assets/4.png', keywords: ['toy', 'story'], isFiltered: true },
-{ id: 1, url: 'assets/6.png', keywords: ['happy'], isFiltered: true },
-{ id: 2, url: 'assets/3.jpg', keywords: ['trump', 'happy'], isFiltered: true },
-{ id: 3, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true }];
-var gState = { selectedImgId: 5, txts: [{ text: 'I never eat Falafel', size: 4, align: 'left', color: 'red' }] };
+var gImgs = [   { id: 0, url: 'assets/4.png', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
+                { id: 1, url: 'assets/6.png', keywords: ['hamudi', 'happy', 'hamudi'], isFiltered: true },
+                { id: 2, url: 'assets/3.jpg', keywords: ['hamudi', 'trump', 'happy', 'smugged','hamu'], isFiltered: true },
+                { id: 3, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 4, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 5, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 6, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 7, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead', 'ham', 'puki'], isFiltered: true },
+                { id: 8, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 9, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 10, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 11, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 12, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 13, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 14, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 15, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true }];
 
-function imageClicked(indx) {
-    console.log('clicked ' + indx);
-    console.log(gImgs[indx - 1]);
-    // return gImgs[indx-1];
-    editImage(gImgs[indx - 1]);
+var gMapKeys = {};
+var gState = { selectedImgId: -1, txts: [{ text: '', size: 0, align: '', color: '' , font:''}] };
+
+
+function initPage() {
+    createMapKeys();
+    renderImageGallery();
+    document.querySelector('.search-section').addEventListener('input', function (e) {
+        // console.log("keyup event detected! coming from this element:", e.target.value);
+        search4ImgsByKey();
+    }, false);
+}
+
+function createMapKeys() {
+    for (var i = 0; i < gImgs.length; i++) {
+        for (var j = 0; j < gImgs[i].keywords.length; j++) {
+            if (gMapKeys[gImgs[i].keywords[j]]) gMapKeys[gImgs[i].keywords[j]]++;
+            else gMapKeys[gImgs[i].keywords[j]] = 1;
+        }
+    }
+}
+
+function imageClicked(idx) {
+    console.log(gImgs[idx]);
+    gState.selectedImgId = gImgs[idx].id;
+    console.log('selected image id: ' + gState.selectedImgId);
+    editImage(gImgs[idx]);
+}
+
+function renderImageGallery() {
+    var strHTML = '';
+    gImgs.forEach(function (img, index) {
+        if (img.isFiltered) {
+            strHTML += `<img class="gallery-img" src="${img.url}" onclick="imageClicked(${index})">`;
+        }
+    }, this);
+    var elImgContainer = document.querySelector('.images-container');
+    elImgContainer.innerHTML = strHTML;
 }
 
 
-
-function searchImage() {
-    var elInput = document.querySelector('input');
+function search4ImgsByKey() {
+    var elInput = document.querySelector('.search-box');
     var searchStr = elInput.value;
-
-    console.log('searching for: ' + searchStr);
+    
+    searchUpdtImage(searchStr);
+    renderImageGallery();
 }
 
-// function onChangeInputSearch () {
+function uploadImage() {
+    var elInput = document.querySelector('.url-box');
+    console.log(elInput.value);
+}
 
-// }
+function setKeywordSearch(displayed) {
+    var elInput = document.querySelector('.keywords-box');
+    var strHTML = elInput.innerHTML;
+    if(displayed){
+         strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">search Keywords</button>`;
+        //  <button onclick="setKeywordSearch(0)">search Keywords</button>
+    } else {
+        var searchedWord = '';
+        strHTML = `<button class="touch-btn" onclick="setKeywordSearch(1)">search Keywords</button>`;
+        for (var pref in gMapKeys) {
+            searchedWord += (pref + ' ');
+            var wordFontSize = setFontSize(pref);
+            console.log(wordFontSize);
+            strHTML += `<span class="key-word" onclick="searchKeywordList('${pref}')" style="font-size:${wordFontSize}">${pref}</span>`;
+        }
+    }
+    elInput.innerHTML = strHTML;
+    // var elInput = document.querySelector('.keywords-box');
+    // var searchedWord = '';
+    // var strHTML = elInput.innerHTML;
+    // for (var pref in gMapKeys) {
+    //     searchedWord += (pref + ' ');
+    //     var wordFontSize = setFontSize(pref);
+    //     console.log(wordFontSize);
+    //     strHTML += `<span class="key-word" onclick="searchKeywordList('${pref}')" style="font-size:${wordFontSize}">${pref}</span>`;
+    // }
+    // elInput.innerHTML = strHTML;
+}
 
+function setFontSize(searchStr) {
+    var percent = getWordPercentage(searchStr);
+    var fontSize = '20px';
 
+    if (percent > 40) {
+        fontSize = '50px';
+    } else if (percent < 80 && percent > 30) {
+        fontSize = '30px';
+    }
+    return fontSize;
+}
 
+function getWordPercentage(word) {
+    var pecent;
+    var totalWordsCount = 0;
+
+    for (var pref in gMapKeys) {
+        totalWordsCount += gMapKeys[pref];
+    }
+
+    pecent = 100 * gMapKeys[word] / totalWordsCount;
+    console.log('pecent= ' + pecent);
+    return pecent;
+}
+
+function searchUpdtImage(searchStr) {
+    if (gMapKeys[searchStr]) {
+        // console.log('searching for: ' + searchStr);
+
+        for(var i=0; i<gImgs.length; i++) {
+            for(var j=0; j< gImgs[i].keywords.length; j++) {
+                if (gImgs[i].keywords[j] === searchStr){
+                    gImgs[i].isFiltered = true;
+                    break;
+                } else {
+                    gImgs[i].isFiltered = false;
+                } 
+            }
+        }
+    } else {
+        gImgs.forEach(function(img) {
+            img.isFiltered = true;
+        }, this);
+    }
+}
+
+function searchKeywordList(searchStr) {
+    searchUpdtImage(searchStr);
+    renderImageGallery();
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
