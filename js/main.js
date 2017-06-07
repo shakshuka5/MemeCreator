@@ -52,6 +52,10 @@ var gFontSize = 30;
 var gFontType = "Impact, Charcoal, sans-serif";
 
 function initEditor(selImg) { //load start
+  var elEditor = document.getElementById('image-editor');
+      console.log('DISPLAY',elEditor);
+    elEditor.style.display = "";
+    console.log('DISPLAY',elEditor);
 
     img = document.getElementById("hidden-image");
 
@@ -69,7 +73,6 @@ function initEditor(selImg) { //load start
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, imgx, imgy, canvas.width, canvas.height);
-
 
 
 

@@ -1,7 +1,12 @@
 
 .image-editor{
+margin-top: 20px;
 width: 100%;
 height: auto;
-//background-color: blue;
 flex-direction: column;
+display:none;
 }
+
+.image-canvas{
+     border: 5px solid blue;
+ }

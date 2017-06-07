@@ -187,18 +187,19 @@ header {
   border-radius: 10px; }
 
 .image-editor {
+  margin-top: 20px;
   width: 100%;
   height: auto;
   flex-direction: column; }
+
+.image-canvas {
+  border: 5px solid blue; }
 
 .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-
-.image-canvas {
-  border: 5px solid blue; }
 
 .navigation {
   margin: 0;
