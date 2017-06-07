@@ -6,12 +6,13 @@
     background-color: lightgoldenrodyellow;
     border: 1px solid grey;
     padding: 10px;
-    margin: em(20px) auto;
+    margin: em(10px) auto;
     min-height: 500px;
-    // min-width: 100px;
     overflow: hidden;
-  
-    img{
+}
+
+.images-container {
+ img{
         margin-top: 20px;
         margin-right: 5px;
         margin-left: 5px;
@@ -19,7 +20,7 @@
         height: auto;
         border: 1px solid black;
         min-width: 300px;
-    }    
+    }   
 }
 
 .search-section {
