@@ -1,5 +1,8 @@
 .gallery-section{
-    width: $mobile-screen-width;
+    // width: $mobile-screen-width;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     @media (max-width: $mobile-screen-width) {
       flex: 1 1 100%;
     }
@@ -13,6 +16,7 @@
 
 .images-container {
  img{
+        clip-path: polygon(50% 0%, 80% 25%, 80% 75%, 50% 100%, 20% 75%, 20% 25%);
         margin-top: 20px;
         margin-right: 5px;
         margin-left: 5px;
