@@ -1,10 +1,11 @@
 
 .image-editor{
 margin-top: 20px;
-width: 100%;
+//width: 100%;
 height: auto;
 flex-direction: row;
 transition:  0.5s;
+max-width: 980px;
 //@media (max-width: $mobile-screen-width) {
 @media (max-width: 980px) {
     flex-direction: column;

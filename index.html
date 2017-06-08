@@ -16,20 +16,28 @@
 
       <logo class="logo">
         <a href="#">Memegen<span class="nav-selected-color">.</span></a>
+        <!--<img src="assets/logoForSite.png" alt="" class="logo-image">   -->
+        
       </logo>
-      <!--<div class="center-div">
-        <img src="assets/logoBlack.png" alt="" class="center-image">
-      </div>-->
 
+      <div class="center-div">
+        <img src="assets/logoBlack.png" alt="" class="center-image">
+      </div>
+    
 
       <navBar class="flex nav-bar">
-        <a class="flex menue-item align-center justify-center" href="#">About</a>
-        <a class="flex menue-item align-center justify-center" href="#">Contact</a>
+        <a class="flex menue-item align-center justify-center" href="#about-section">About</a>
+        <a class="flex menue-item align-center justify-center" href="#contact-section">Contact</a>
       </navBar>
 
-      <!--<div class="header-triangle"></div>-->
+
     </nav>
   </header>
+
+<div class="triangle-container">
+      <div class="header-triangle"></div>
+</div>
+
   <div class="main-container">
 
     <!--////////////////////////////  IMAGE EDITOR  ////////////////////////////////-->
@@ -57,37 +65,34 @@
   </div>
 
   <br><br>
-  <hr>
+  <!--<hr>-->
 
 
 
 
   <!--////////////////////////////  GALLERY SECTION  ////////////////////////////////-->
   <div class="gallery-section flex align-center justify-center flex-wrap">
-    <div class="search-section">
+    <div class="search-section container">
       <label>Search:</label>
-      <input class="search-box" type="text" name="search" placeholder="type here for images key words...">
-      <!--<div>
-          <label>Insert image url:</label>
-          <input class="url-box" type="text" name="imageUrl" placeholder="type here for image url...">
-        </div>-->
-
+      <input class="search-box" type="text" name="search" placeholder="Search images by key words">
+      <!--<button>Key Words</button>
+      <button>Clear</button>
+      <button>Upload</button>-->
+       
+    </div>
+  
       <div class="keywords-box">
-        <button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>
+        <button class="touch-btn" onclick="setKeywordSearch(0)">Select word</button>
       </div>
 
-      <!--<div> <input id="uploadedfile" type="file"></div>-->
-    </div>
-
-    <!--images inserted in js-->
     <div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>
 
   </div>
   </div>
 
-  <div class="about-section flex align-center justify-center flex-wrap">
+  <div class="about-section container flex align-center justify-center flex-wrap">
     <img class="about-image" src="assets/about.jpg" alt="image1" class="img-responsive">
-    <div class="about-text">
+    <div class="about-text" id="about-section">
       <h1 class="main-title"> Assaf & Taly </h1>
       <h2 class="secondary-title">Elders in process</h2>
       <p class="about-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer venenatis quis odio eu auctor. Donec commodo, leo
@@ -105,8 +110,8 @@
     </div>
   </div>
 
-  <div class="contact-section">
-    <div class="inner-contact-container flex align-center justify-center flex-wrap">
+  <div class="contact-section" id="contact-section">
+    <div class="inner-contact-container flex container align-center justify-center flex-wrap">
       <div class="left-part-contact">
         <h1 class="contact-h1">Get in Touch</h1>
         <h2 class="contact-h2">In order to get in touch use the contact form below:</h2>
