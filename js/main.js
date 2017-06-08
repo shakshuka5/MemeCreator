@@ -1,41 +1,182 @@
 'use strict'
 
-var gImgs = [{ id: 0, url: 'assets/4.png', keywords: ['toy', 'story'], isFiltered: true },
-{ id: 1, url: 'assets/6.png', keywords: ['happy'], isFiltered: true },
-{ id: 2, url: 'assets/3.jpg', keywords: ['trump', 'happy'], isFiltered: true },
-{ id: 3, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true }];
+var gImgs = [   { id: 0, url: 'assets/1.jpg', keywords: ['hamudi'], isFiltered: true },
+                { id: 1, url: 'assets/2.jpg', keywords: ['hamudi', 'happy', 'hamudi'], isFiltered: true },
+                { id: 2, url: 'assets/3.jpg', keywords: ['hamudi', 'trump', 'happy', 'smugged','hamu'], isFiltered: true },
+                { id: 3, url: 'assets/4.jpg', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
+                { id: 4, url: 'assets/5.jpg', keywords: ['hamudi', 'alert'], isFiltered: true },
+                { id: 5, url: 'assets/6.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 6, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 7, url: 'assets/8.jpg', keywords: ['hamudi', 'redhead', 'puki', 'man'], isFiltered: true },
+                { id: 8, url: 'assets/9.jpg', keywords: ['hamudi', 'redhead', 'girl'], isFiltered: true },
+                { id: 9, url: 'assets/10.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 10, url: 'assets/11.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 11, url: 'assets/12.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 12, url: 'assets/13.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 13, url: 'assets/14.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 14, url: 'assets/15.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 15, url: 'assets/16.jpg', keywords: ['hamudi', 'man'], isFiltered: true }];
 
-var gState = { selectedImgId: 5, screen: {}, img:{}, canvas:{}, txts: [] };//UPDATED  
+var gMapKeys = {};
+var gState = { selectedImgId: -1, screen: {}, img:{}, canvas:{}, txts: [] };//UPDATED  var gCardsDisp;
 
 
-function initSite() {
-    hideElementById('image-editor');
-
+function initPage() {
+    hideElementById('image-editor');//hide the EDITOR
+    // gCardsDisp = true;
+    
+    createMapKeys();
+    renderImageGallery();
+    document.querySelector('.search-section').addEventListener('input', function (e) {
+        search4ImgsByKey();
+    }, false);
 }
 
-
-function imageClicked(indx) {
-    console.log('clicked ' + indx);
-    console.log(gImgs[indx - 1]);
-    // return gImgs[indx-1];
-    editImage(gImgs[indx - 1]);
-}
-
-
-
-function searchImage() {
-    var elInput = document.querySelector('input');
-    var searchStr = elInput.value;
-
-    console.log('searching for: ' + searchStr);
-}
-
-// function onChangeInputSearch () {
-
+// function getNewImage(e) {
+//     console.log('hi ' + e);
 // }
 
+function createMapKeys() {
+    for (var i = 0; i < gImgs.length; i++) {
+        for (var j = 0; j < gImgs[i].keywords.length; j++) {
+            if (gMapKeys[gImgs[i].keywords[j]]) gMapKeys[gImgs[i].keywords[j]]++;
+            else gMapKeys[gImgs[i].keywords[j]] = 1;
+        }
+    }
+}
+
+function imageClicked(idx) {
+    gState.selectedImgId = gImgs[idx].id;
+    editImage(gImgs[idx]);
+}
+
+function renderImageGallery() {
+    var strHTML = '';
+    gImgs.forEach(function (img, index) {
+        if (img.isFiltered) {
+            strHTML += `<img class="gallery-img" src="${img.url}" onclick="imageClicked(${index})">`;
+        }
+    }, this);
+    var elImgContainer = document.querySelector('.images-container');
+    elImgContainer.innerHTML = strHTML;
+}
 
 
+function search4ImgsByKey() {
+    var elInput = document.querySelector('.search-box');
+    var searchStr = elInput.value;
+    
+    searchUpdtImage(searchStr);
+    renderImageGallery();
+}
+
+// function uploadImage() {
+//     var elInput = document.querySelector('.url-box');
+//     console.log(elInput.value);
+// }
+
+function setKeywordSearch(displayed) {
+    var elInput = document.querySelector('.keywords-box');
+    var strHTML = elInput.innerHTML;
+    if(displayed){
+         strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>`;
+        //  <button onclick="setKeywordSearch(0)">search Keywords</button>
+    } else {
+        var searchedWord = '';
+        strHTML = `<button class="touch-btn" onclick="setKeywordSearch(1)">Close...</button>`;
+        strHTML += `<button class="touch-btn" onclick="clearSearch()">Clear</button>`;
+        for (var pref in gMapKeys) {
+            searchedWord += (pref + ' ');
+            var wordFontSize = setFontSize(pref);
+            strHTML += `<span class="key-word" onclick="searchKeywordList('${pref}')" style="font-size:${wordFontSize}">${pref}</span>`;
+        }
+    }
+    elInput.innerHTML = strHTML;
+}
+
+function clearSearch() {
+    setDisp2AllImages();
+    renderImageGallery();
+}
+
+function setDisp2AllImages() {
+    gImgs.forEach(function(img) {
+            img.isFiltered = true;
+        }, this);
+}
+
+function setDisp2None() {
+    gImgs.forEach(function(img) {
+            img.isFiltered = false;
+        }, this);
+}
+
+function setFontSize(searchStr) {
+    var percent = getWordPercentage(searchStr);
+    var fontSize = '20px';
+
+    if (percent > 40) {
+        fontSize = '50px';
+    } else if (percent < 80 && percent > 30) {
+        fontSize = '30px';
+    }
+    return fontSize;
+}
+
+function getWordPercentage(word) {
+    var pecent;
+    var totalWordsCount = 0;
+
+    for (var pref in gMapKeys) {
+        totalWordsCount += gMapKeys[pref];
+    }
+
+    pecent = 100 * gMapKeys[word] / totalWordsCount;
+    return pecent;
+}
+
+function searchUpdtImage(searchStr) {
+    if (searchStr) {
+        if (gMapKeys[searchStr]) {
+            for(var i=0; i<gImgs.length; i++) {
+                for(var j=0; j< gImgs[i].keywords.length; j++) {
+                    if (gImgs[i].keywords[j] === searchStr){
+                        gImgs[i].isFiltered = true;
+                        break;
+                    } else {
+                        gImgs[i].isFiltered = false;
+                    } 
+                }
+            }
+        } else {
+            setDisp2None();
+        }
+    } else {
+        setDisp2AllImages();
+    }
+
+    // if (gMapKeys[searchStr]) {
+    //     for(var i=0; i<gImgs.length; i++) {
+    //         for(var j=0; j< gImgs[i].keywords.length; j++) {
+    //             if (gImgs[i].keywords[j] === searchStr){
+    //                 gImgs[i].isFiltered = true;
+    //                 break;
+    //             } else {
+    //                 gImgs[i].isFiltered = false;
+    //             } 
+    //         }
+    //     }
+    // } else {
+    //     gImgs.forEach(function(img) {
+    //         img.isFiltered = true;
+    //     }, this);
+    // }
+}
+
+function searchKeywordList(searchStr) {
+    searchUpdtImage(searchStr);
+    renderImageGallery();
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////
 

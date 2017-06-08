@@ -16,7 +16,7 @@
 
 .images-container {
  img{
-        clip-path: polygon(50% 0%, 80% 25%, 80% 75%, 50% 100%, 20% 75%, 20% 25%);
+        // clip-path: polygon(50% 0%, 80% 25%, 80% 75%, 50% 100%, 20% 75%, 20% 25%);
         margin-top: 20px;
         margin-right: 5px;
         margin-left: 5px;
@@ -29,11 +29,12 @@
 
 .search-section {
     padding: 5px;
-    min-height: 30px;
+    min-height: 120px;
     background-color: yellowgreen;
     border-bottom: 1px solid grey;
     width: 100%;
-    text-align: center;
+    text-align: left;
+    padding: 10px;;
     font:var(--secondary-font);
 }
 
@@ -41,4 +42,33 @@
     height: 48px;
     width: 48px;
     border-radius: 10px;
+}
+
+.searchBox {
+    font-family: cursive;
+}
+
+.url-box {
+    // float: left;
+}
+
+.keywords-box {
+    border: 1px solid grey;
+    height: 100px;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.key-word{
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.touch-btn {
+    height: 60px;
+    width: 60px;
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 10px;
+    float: left;
 }
