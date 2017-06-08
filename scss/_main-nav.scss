@@ -1,17 +1,26 @@
   
   header{
     background-color: #252525;
+    //height: 60px;
     height: 130px;
     border-bottom:solid #181818 6px;  
     }
     
-
+.header-triangle{
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  border-top: 40px solid #252525;
+  align-items:top;
+  margin: 0px auto;
+  position:relative;
+}
 
 .logo{
   font-family: eurofurence;
     font-size: 40px;
     font-weight: 400;
     color: #ffffff;
+
 }
 
 .nav-selected-color{
@@ -25,7 +34,9 @@
 
 .menue-item{
     width: 130px;
-    height:130px;
+    height:130px;   
+    // width: 130px;
+    // height:60px;
     padding:0px 18px;
     flex: 1 1 130px;
     color: #ffffff;

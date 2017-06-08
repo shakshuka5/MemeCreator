@@ -121,6 +121,14 @@ header {
   height: 130px;
   border-bottom: solid #181818 6px; }
 
+.header-triangle {
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  border-top: 40px solid #252525;
+  align-items: top;
+  margin: 0px auto;
+  position: relative; }
+
 .logo {
   font-family: eurofurence;
   font-size: 40px;
@@ -241,7 +249,7 @@ header {
   height: auto;
   flex-direction: row;
   transition: 0.5s; }
-  @media (max-width: 700px) {
+  @media (max-width: 980px) {
     .image-editor {
       flex-direction: column; } }
 
@@ -261,28 +269,33 @@ header {
   margin-left: 20px; }
   @media (max-width: 780px) {
     .editor-controls {
-      margin-left: 20px; } }
+      margin-left: 0px; } }
 
 .input-lines {
   display: flex;
   flex-direction: column; }
 
 .editor-general-buttons {
-  margin-top: 15px; }
+  margin-top: 15px;
+  min-width: 20px;
+  display: flex;
+  justify-content: center; }
 
 .save-button {
   background-color: green;
   border-radius: 4px;
   color: white;
   padding: 10px;
-  min-width: 170px; }
+  min-width: 170px;
+  margin-left: 10px; }
 
 .make-another-meme-button {
   background-color: darkgray;
   border-radius: 4px;
   color: white;
   padding: 10px;
-  min-width: 170px; }
+  min-width: 170px;
+  margin-right: 10px; }
 
 .text-props {
   display: flex; }
@@ -470,7 +483,7 @@ header {
 footer {
   border-top: 1px solid #c3c3c3;
   background-color: #f9f9f9;
-  height: 314px;
+  height: 150px;
   justify-content: center;
   align-items: center; }
 
@@ -479,7 +492,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 155px; }
+  height: 100px; }
   .footer-content .logo {
     line-height: 65%; }
   .footer-content a {

@@ -61,7 +61,8 @@ text-transform: uppercase;
 footer{
      border-top:1px solid #c3c3c3;
      background-color: #f9f9f9;
-      height: 314px;
+ //     height: 314px;
+      height: 150px;
       justify-content: center;
       align-items: center;
 }
@@ -73,7 +74,8 @@ footer{
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      height: 155px; 
+   //   height: 155px; 
+      height: 100px; 
 .logo{line-height: 65%;}
 a{color: #252525;}
 }
