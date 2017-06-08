@@ -1,6 +1,8 @@
 'use strict'
 
-var gImgs = [   { id: 0, url: 'assets/1.jpg', keywords: ['hamudi'], isFiltered: true },
+var LS_MEME_USER = 'ourMemeUserContact';
+
+var gImgs = [   { id: 0, url: 'assets/1.jpg', keywords: ['pink', 'hamudi'], isFiltered: true },
                 { id: 1, url: 'assets/2.jpg', keywords: ['hamudi', 'happy', 'hamudi'], isFiltered: true },
                 { id: 2, url: 'assets/3.jpg', keywords: ['hamudi', 'trump', 'happy', 'smugged','hamu'], isFiltered: true },
                 { id: 3, url: 'assets/4.jpg', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
@@ -23,7 +25,6 @@ var gState = { selectedImgId: -1, screen: {}, img:{}, canvas:{}, txts: [] };//UP
 
 function initPage() {
     hideElementById('image-editor');//hide the EDITOR
-    // gCardsDisp = true;
     
     createMapKeys();
     renderImageGallery();
@@ -31,10 +32,6 @@ function initPage() {
         search4ImgsByKey();
     }, false);
 }
-
-// function getNewImage(e) {
-//     console.log('hi ' + e);
-// }
 
 function createMapKeys() {
     for (var i = 0; i < gImgs.length; i++) {
@@ -70,17 +67,11 @@ function search4ImgsByKey() {
     renderImageGallery();
 }
 
-// function uploadImage() {
-//     var elInput = document.querySelector('.url-box');
-//     console.log(elInput.value);
-// }
-
 function setKeywordSearch(displayed) {
     var elInput = document.querySelector('.keywords-box');
     var strHTML = elInput.innerHTML;
     if(displayed){
          strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>`;
-        //  <button onclick="setKeywordSearch(0)">search Keywords</button>
     } else {
         var searchedWord = '';
         strHTML = `<button class="touch-btn" onclick="setKeywordSearch(1)">Close...</button>`;
@@ -116,9 +107,9 @@ function setFontSize(searchStr) {
     var fontSize = '20px';
 
     if (percent > 40) {
-        fontSize = '50px';
-    } else if (percent < 80 && percent > 30) {
-        fontSize = '30px';
+        fontSize = '60px';
+    } else if (percent < 80 && percent > 10) {
+        fontSize = '40px';
     }
     return fontSize;
 }
@@ -154,29 +145,35 @@ function searchUpdtImage(searchStr) {
     } else {
         setDisp2AllImages();
     }
-
-    // if (gMapKeys[searchStr]) {
-    //     for(var i=0; i<gImgs.length; i++) {
-    //         for(var j=0; j< gImgs[i].keywords.length; j++) {
-    //             if (gImgs[i].keywords[j] === searchStr){
-    //                 gImgs[i].isFiltered = true;
-    //                 break;
-    //             } else {
-    //                 gImgs[i].isFiltered = false;
-    //             } 
-    //         }
-    //     }
-    // } else {
-    //     gImgs.forEach(function(img) {
-    //         img.isFiltered = true;
-    //     }, this);
-    // }
 }
 
 function searchKeywordList(searchStr) {
     searchUpdtImage(searchStr);
     renderImageGallery();
 }
+
+function saveContactDeatails() {
+    console.log('saving to local storage...');
+    var detailsStr = getUserDetail();
+    saveUsers (detailsStr);
+}
+
+function getUserDetail() {
+    var elInput = document.querySelectorAll('.contact-details');
+    var contactStr = '';
+    for(var i=0; i<elInput.length; i++) {
+        contactStr += elInput[i].value + ' ';
+    }
+    return contactStr;
+}
+
+// saves the user details to localStorage using JSON.stringify()
+function saveUsers (detailsStr) {
+    var usersJSON = JSON.stringify(detailsStr);
+    localStorage.setItem(LS_MEME_USER, usersJSON);
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
