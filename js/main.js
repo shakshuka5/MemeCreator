@@ -7,15 +7,15 @@ var gImgs = [   { id: 0, url: 'assets/1.jpg', keywords: ['pink', 'hamudi'], isFi
                 { id: 2, url: 'assets/3.jpg', keywords: ['hamudi', 'trump', 'happy', 'smugged','hamu'], isFiltered: true },
                 { id: 3, url: 'assets/4.jpg', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
                 { id: 4, url: 'assets/5.jpg', keywords: ['hamudi', 'alert'], isFiltered: true },
-                { id: 5, url: 'assets/6.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 5, url: 'assets/6.jpg', keywords: ['hamudi', 'happy'], isFiltered: true },
                 { id: 6, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 7, url: 'assets/8.jpg', keywords: ['hamudi', 'redhead', 'puki', 'man'], isFiltered: true },
-                { id: 8, url: 'assets/9.jpg', keywords: ['hamudi', 'redhead', 'girl'], isFiltered: true },
-                { id: 9, url: 'assets/10.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
-                { id: 10, url: 'assets/11.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
-                { id: 11, url: 'assets/12.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 7, url: 'assets/8.jpg', keywords: ['hamudi', 'serious', 'puki', 'man'], isFiltered: true },
+                { id: 8, url: 'assets/9.jpg', keywords: ['hamudi', 'silly', 'girl'], isFiltered: true },
+                { id: 9, url: 'assets/10.jpg', keywords: ['hamudi', 'man','yeh Baby!!'], isFiltered: true },
+                { id: 10, url: 'assets/11.jpg', keywords: ['hamudi', 'man', 'serious'], isFiltered: true },
+                { id: 11, url: 'assets/12.jpg', keywords: ['hamudi', 'man', 'serious', 'on the Phone...'], isFiltered: true },
                 { id: 12, url: 'assets/13.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
-                { id: 13, url: 'assets/14.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 13, url: 'assets/14.jpg', keywords: ['hamudi', 'man', 'serious'], isFiltered: true },
                 { id: 14, url: 'assets/15.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
                 { id: 15, url: 'assets/16.jpg', keywords: ['hamudi', 'man'], isFiltered: true }];
 
@@ -69,6 +69,9 @@ function search4ImgsByKey() {
 
 function setKeywordSearch(displayed) {
     var elInput = document.querySelector('.keywords-box');
+    var elSearchBox = document.querySelector('.search-box');
+    elSearchBox.value = '';
+
     var strHTML = elInput.innerHTML;
     if(displayed){
          strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>`;

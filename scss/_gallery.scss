@@ -7,7 +7,7 @@
       flex: 1 1 100%;
     }
     background-color: var(--gallery-meta-background-color);
-    border: 1px solid var(--gallery-meta-border-color);
+    // border: 1px solid var(--gallery-meta-border-color);
     padding: 10px;
     margin: em(10px) auto;
     min-height: 500px;
@@ -36,13 +36,20 @@
 
 .search-section {
     padding: 5px;
-    min-height: 120px;
+    min-height: 50px;
     // background-color: yellowgreen;
     border-bottom: 1px solid grey;
     width: 100%;
     text-align: left;
-    padding: 10px;;
-    font:var(--secondary-font);
+    padding: 10px;
+    font-family: var(--about-h1-font);
+}
+
+.search-box {
+    font-family: var(--about-h1-font);
+    height: 30px;
+    min-width: 100px;
+    width: 200px;
 }
 
 .button {
@@ -64,6 +71,7 @@
     border: 1px solid grey;
     border-radius: 10px;
     margin-left: 10px;
+    margin-top: 10px;
 }
 
 .key-word{
