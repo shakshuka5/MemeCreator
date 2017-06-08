@@ -1,34 +1,40 @@
 'use strict'
 
-var gImgs = [   { id: 0, url: 'assets/4.png', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
-                { id: 1, url: 'assets/6.png', keywords: ['hamudi', 'happy', 'hamudi'], isFiltered: true },
+var gImgs = [   { id: 0, url: 'assets/1.jpg', keywords: ['hamudi'], isFiltered: true },
+                { id: 1, url: 'assets/2.jpg', keywords: ['hamudi', 'happy', 'hamudi'], isFiltered: true },
                 { id: 2, url: 'assets/3.jpg', keywords: ['hamudi', 'trump', 'happy', 'smugged','hamu'], isFiltered: true },
-                { id: 3, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 4, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 5, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+                { id: 3, url: 'assets/4.jpg', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
+                { id: 4, url: 'assets/5.jpg', keywords: ['hamudi', 'alert'], isFiltered: true },
+                { id: 5, url: 'assets/6.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
                 { id: 6, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 7, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead', 'ham', 'puki'], isFiltered: true },
-                { id: 8, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 9, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 10, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 11, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 12, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 13, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 14, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 15, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true }];
+                { id: 7, url: 'assets/8.jpg', keywords: ['hamudi', 'redhead', 'puki', 'man'], isFiltered: true },
+                { id: 8, url: 'assets/9.jpg', keywords: ['hamudi', 'redhead', 'girl'], isFiltered: true },
+                { id: 9, url: 'assets/10.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 10, url: 'assets/11.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 11, url: 'assets/12.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 12, url: 'assets/13.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 13, url: 'assets/14.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 14, url: 'assets/15.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+                { id: 15, url: 'assets/16.jpg', keywords: ['hamudi', 'man'], isFiltered: true }];
 
 var gMapKeys = {};
 var gState = { selectedImgId: -1, txts: [{ text: '', size: 0, align: '', color: '' , font:''}] };
+var gCardsDisp;
 
 
 function initPage() {
+    gCardsDisp = true;
+    
     createMapKeys();
     renderImageGallery();
     document.querySelector('.search-section').addEventListener('input', function (e) {
-        // console.log("keyup event detected! coming from this element:", e.target.value);
         search4ImgsByKey();
     }, false);
 }
+
+// function getNewImage(e) {
+//     console.log('hi ' + e);
+// }
 
 function createMapKeys() {
     for (var i = 0; i < gImgs.length; i++) {
@@ -40,9 +46,7 @@ function createMapKeys() {
 }
 
 function imageClicked(idx) {
-    console.log(gImgs[idx]);
     gState.selectedImgId = gImgs[idx].id;
-    console.log('selected image id: ' + gState.selectedImgId);
     editImage(gImgs[idx]);
 }
 
@@ -66,38 +70,45 @@ function search4ImgsByKey() {
     renderImageGallery();
 }
 
-function uploadImage() {
-    var elInput = document.querySelector('.url-box');
-    console.log(elInput.value);
-}
+// function uploadImage() {
+//     var elInput = document.querySelector('.url-box');
+//     console.log(elInput.value);
+// }
 
 function setKeywordSearch(displayed) {
     var elInput = document.querySelector('.keywords-box');
     var strHTML = elInput.innerHTML;
     if(displayed){
-         strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">search Keywords</button>`;
+         strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>`;
         //  <button onclick="setKeywordSearch(0)">search Keywords</button>
     } else {
         var searchedWord = '';
-        strHTML = `<button class="touch-btn" onclick="setKeywordSearch(1)">search Keywords</button>`;
+        strHTML = `<button class="touch-btn" onclick="setKeywordSearch(1)">Close...</button>`;
+        strHTML += `<button class="touch-btn" onclick="clearSearch()">Clear</button>`;
         for (var pref in gMapKeys) {
             searchedWord += (pref + ' ');
             var wordFontSize = setFontSize(pref);
-            console.log(wordFontSize);
             strHTML += `<span class="key-word" onclick="searchKeywordList('${pref}')" style="font-size:${wordFontSize}">${pref}</span>`;
         }
     }
     elInput.innerHTML = strHTML;
-    // var elInput = document.querySelector('.keywords-box');
-    // var searchedWord = '';
-    // var strHTML = elInput.innerHTML;
-    // for (var pref in gMapKeys) {
-    //     searchedWord += (pref + ' ');
-    //     var wordFontSize = setFontSize(pref);
-    //     console.log(wordFontSize);
-    //     strHTML += `<span class="key-word" onclick="searchKeywordList('${pref}')" style="font-size:${wordFontSize}">${pref}</span>`;
-    // }
-    // elInput.innerHTML = strHTML;
+}
+
+function clearSearch() {
+    setDisp2AllImages();
+    renderImageGallery();
+}
+
+function setDisp2AllImages() {
+    gImgs.forEach(function(img) {
+            img.isFiltered = true;
+        }, this);
+}
+
+function setDisp2None() {
+    gImgs.forEach(function(img) {
+            img.isFiltered = false;
+        }, this);
 }
 
 function setFontSize(searchStr) {
@@ -121,29 +132,45 @@ function getWordPercentage(word) {
     }
 
     pecent = 100 * gMapKeys[word] / totalWordsCount;
-    console.log('pecent= ' + pecent);
     return pecent;
 }
 
 function searchUpdtImage(searchStr) {
-    if (gMapKeys[searchStr]) {
-        // console.log('searching for: ' + searchStr);
-
-        for(var i=0; i<gImgs.length; i++) {
-            for(var j=0; j< gImgs[i].keywords.length; j++) {
-                if (gImgs[i].keywords[j] === searchStr){
-                    gImgs[i].isFiltered = true;
-                    break;
-                } else {
-                    gImgs[i].isFiltered = false;
-                } 
+    if (searchStr) {
+        if (gMapKeys[searchStr]) {
+            for(var i=0; i<gImgs.length; i++) {
+                for(var j=0; j< gImgs[i].keywords.length; j++) {
+                    if (gImgs[i].keywords[j] === searchStr){
+                        gImgs[i].isFiltered = true;
+                        break;
+                    } else {
+                        gImgs[i].isFiltered = false;
+                    } 
+                }
             }
+        } else {
+            setDisp2None();
         }
     } else {
-        gImgs.forEach(function(img) {
-            img.isFiltered = true;
-        }, this);
+        setDisp2AllImages();
     }
+
+    // if (gMapKeys[searchStr]) {
+    //     for(var i=0; i<gImgs.length; i++) {
+    //         for(var j=0; j< gImgs[i].keywords.length; j++) {
+    //             if (gImgs[i].keywords[j] === searchStr){
+    //                 gImgs[i].isFiltered = true;
+    //                 break;
+    //             } else {
+    //                 gImgs[i].isFiltered = false;
+    //             } 
+    //         }
+    //     }
+    // } else {
+    //     gImgs.forEach(function(img) {
+    //         img.isFiltered = true;
+    //     }, this);
+    // }
 }
 
 function searchKeywordList(searchStr) {
