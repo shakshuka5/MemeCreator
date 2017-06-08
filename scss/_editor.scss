@@ -5,7 +5,7 @@ width: 100%;
 height: auto;
 flex-direction: row;
 transition:  0.5s;
-@media (max-width: 780px){
+@media (max-width: $mobile-screen-width){
     flex-direction: column;
     }
 }
@@ -16,6 +16,17 @@ transition:  0.5s;
 .image-canvas{
      border: 6px solid darkgray;
  }
+
+.editor-controls{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    margin-left: 20px;
+
+    @media (max-width: 780px){
+    margin-left: 20px;
+    }
+}
 
  .input-lines{
      display:flex;

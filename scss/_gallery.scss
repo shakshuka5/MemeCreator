@@ -6,13 +6,20 @@
     @media (max-width: $mobile-screen-width) {
       flex: 1 1 100%;
     }
-    background-color: lightgoldenrodyellow;
-    border: 1px solid grey;
+    background-color: var(--gallery-meta-background-color);
+    border: 1px solid var(--gallery-meta-border-color);
     padding: 10px;
     margin: em(10px) auto;
     min-height: 500px;
     overflow: hidden;
 }
+
+// .key-word{
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     flex-direction: column;
+// }
 
 .images-container {
  img{
