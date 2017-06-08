@@ -6,7 +6,7 @@
   <title>Meme Generator</title>
   <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="dist/style.css">
-<link rel="shortcut icon" type="image/png" href="assets/logo.png"/>
+  <link rel="shortcut icon" type="image/png" href="assets/logo.png" />
 </head>
 
 <body onload="initPage()">
@@ -33,80 +33,51 @@
       <div class="canvas-zone">
         <canvas id="image-canvas" class="image-canvas" width="500px" height="500px">
         </canvas>
-            <!--<input type="canvas-text" style="left:100px;top:300px;width:600px" />-->
 
         <img src="assets/meme1.jpg" alt="hidden-image" class="hidden-image" id="hidden-image" style="display:none;"></img>
       </div>
 
       <div id="inputs-zone">
-        <!--<div class="inputs-unit">
-          <input id="topline" placeholder="TYPE HERE" oninput="inputWrite(0,this)"></input>
-          <div id="text-props" class="text-props">
-            <button id="reset-text" class="text-props-button fa fa-trash" onclick="handleText(0,this)"></button>
-            <button id="text-color" class="text-props-button fa fa-tint" onclick="handleText(0,this)"></button>
-            <!--<button id="text-shadow-on"     class="text-props-button FAPLACE" onclick="handleText(0,this)">SHON</button>
-          <button id="text-shadow-off"    class="text-props-button FAPLACE" onclick="handleText(0,this)">SHOFF</button>-->
-            <!--<button id="select-font" class="text-props-button fa fa-font" onclick="handleText(0,this)"></button>
-            <button id="text-size-decrease" class="text-props-button fa fa-minus" onclick="handleText(0,this)"></button>
-            <button id="text-size-increase" class="text-props-button fa fa-plus" onclick="handleText(0,this)"></button>
-            <button id="align-left" class="text-props-button fa fa-align-left" onclick="handleText(0,this)"></button>
-            <button id="align-center" class="text-props-button fa fa-align-center" onclick="handleText(0,this)"></button>
-            <button id="align-right" class="text-props-button fa fa-align-right" onclick="handleText(0,this)"></button>
-          </div>
-        </div>
-
-       <div class="inputs-unit">
-          <input id="topline" placeholder="TYPE HERE" oninput="inputWrite(1,this)"></input>
-          <div id="text-props" class="text-props">
-            <button id="reset-text" class="text-props-button fa fa-trash" onclick="handleText(1,this)"></button>
-            <button id="text-color" class="text-props-button fa fa-tint" onclick="handleText(1,this)"></button>
-            <!--<button id="text-shadow-on"     class="text-props-button FAPLACE" onclick="handleText(1,this)">SHON</button>
-          <button id="text-shadow-off"    class="text-props-button FAPLACE" onclick="handleText(1,this)">SHOFF</button>-->
-            <!--<button id="select-font" class="text-props-button fa fa-font" onclick="handleText(1,this)"></button>
-            <button id="text-size-decrease" class="text-props-button fa fa-minus" onclick="handleText(1,this)"></button>
-            <button id="text-size-increase" class="text-props-button fa fa-plus" onclick="handleText(1,this)"></button>
-            <button id="align-left" class="text-props-button fa fa-align-left" onclick="handleText(1,this)"></button>
-            <button id="align-center" class="text-props-button fa fa-align-center" onclick="handleText(1,this)"></button>
-            <button id="align-right" class="text-props-button fa fa-align-right" onclick="handleText(1,this)"></button>
-          </div>-->
-        </div>
-
-
-        <div class="editor-general-buttons">
-          <button class="make-another-meme-button" onclick="hideElementById('image-editor')">Make Another Meme!</button>
-          <a href="#" class="save-link" id="save-link" download="YourMeme.jpg"><button class="save-button" id="save-button">Download Your Meme!</button></a>
-        </div>
+        <!--TEXT INPUT and TEXT PROPERTY BUTTNS : JS-->
       </div>
 
+
+
+      <div class="editor-general-buttons">
+        <button class="make-another-meme-button" onclick="hideElementById('image-editor')">Make Another Meme!</button>
+        <a href="#" class="save-link" id="save-link" download="YourMeme.jpg"><button class="save-button" id="save-button">Download Your Meme!</button></a>
+      </div>
     </div>
 
-    <br><br>
-    <hr>
+  </div>
+
+  <br><br>
+  <hr>
 
 
 
 
-    <!--////////////////////////////  GALLERY SECTION  ////////////////////////////////-->
-    <div class="gallery-section flex align-center justify-center flex-wrap">
-      <div class="search-section">
-        <label>Search:</label>
-        <input class="search-box" type="text" name="search" placeholder="type here for images key words...">
-        <!--<div>
+  <!--////////////////////////////  GALLERY SECTION  ////////////////////////////////-->
+  <div class="gallery-section flex align-center justify-center flex-wrap">
+    <div class="search-section">
+      <label>Search:</label>
+      <input class="search-box" type="text" name="search" placeholder="type here for images key words...">
+      <!--<div>
           <label>Insert image url:</label>
           <input class="url-box" type="text" name="imageUrl" placeholder="type here for image url...">
         </div>-->
 
-        <div class="keywords-box">
-          <button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>
-        </div>
-
-        <!--<div> <input id="uploadedfile" type="file"></div>-->
+      <div class="keywords-box">
+        <button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>
       </div>
-      
-      <!--images inserted in js-->
-      <div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>
-      
+
+      <!--<div> <input id="uploadedfile" type="file"></div>-->
     </div>
+
+    <!--images inserted in js-->
+    <div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>
+
+  </div>
   </div>
 
   <footer class="footer-class flex">
@@ -130,7 +101,7 @@
 
 
   <script src="js/main.js"></script>
-  
+
 </body>
 
 </html>

@@ -17,9 +17,7 @@
 
 
 .main-container{
-  // width: 100%;
-  // margin-left: auto;
-  // margin-right: auto;
+
   height:auto;
   display: flex;
   flex-direction: column;
@@ -29,111 +27,6 @@
 }
 
  
-
-/////////////////////////////// clean below
-
-// .load-more {
-//   height: 150px;
-//   button {
-//     border: 1px solid black;
-//     background-color: transparent;
-//     padding: 1em 1.5em;
-//     font-size: rem(20px);
-//     font-family: var(--primary-font);
-//     color: var(--main-color);
-//     cursor: pointer;
-//     transition: all 0.5s;
-//     &:hover {
-//       color: darken(#626262, 30%);
-//     }
-//   }
-// }
-
-// afternoon practice CSS
-
-
-// .posts-zone{
-//       border-right:1px solid #c3c3c3;
-//       border-left:1px solid #c3c3c3;
-
-// }
-
-// .post-item{
-//   padding-top: 80px;
-//   max-width: 100%;
-//   @media (max-width: 780px){
-//     flex-direction: column;
-//     .post-data{padding-left:0px; 
-//     //flex: none;
-//     }
-//     .post-data{margin-top:20px; 
-//     //flex:  none;
-//     }
-//  }
-// }
-
-
-
-// .image-container{
-// flex: 1;
-// //width:50%; //thats another implementation option
-// .post-image{
-//   width: 100%;
-//   height: auto;
-// }
-// }
-
-// .post-data{
-// flex: 1;
-// // width:50%; //thats another implementation option
-// flex-direction:column;
-//  justify-content: space-between;
-//  padding-left: 40px;
-//  padding-right: 10px;
-//   h2{margin: 0};
-//   p{margin-top: 10px};
-// }
-
-
-// .post-title{
-// margin-top:0px;
-// color: #4f4e4e;
-// font-family: Lato;
-// font-size: 28px;
-// font-weight: 700;
-// line-height: 30px;
-// text-transform: uppercase;
-// }
-
-// .post-text{
-// color: #606060;
-// font-family: Lato;
-// font-size: 16px;
-// font-weight: 400;
-// line-height: 20px;
-// }
-
-
-// .post-button{
-// width: 186px;
-// height: 40px;
-// border: 2px solid #c3c3c3;
-// background-color: #ffffff;
-// border-radius: 20px 20px 20px 20px;
-// color: #c2c1c1;
-// font-family: Lato;
-// font-size: 16px;
-// font-weight: 700;
-// line-height: 20px;
-// .arrow-right{display:none; margin-left:15px;}
-// transition: 0.2s;
-// &:hover{
-// .arrow-right{display:initial}
-// width: 210px;
-// border: 2px solid #58c93a;
-// color: #58c93a;
-// }
-// }
 
 .navigation{
     margin:0;
