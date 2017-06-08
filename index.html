@@ -6,7 +6,7 @@
   <title>Meme Generator</title>
   <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="dist/style.css">
-<link rel="shortcut icon" type="image/png" href="assets/logo.png"/>
+  <link rel="shortcut icon" type="image/png" href="assets/logo.png" />
 </head>
 
 <body onload="initPage()">
@@ -33,134 +33,104 @@
       <div class="canvas-zone">
         <canvas id="image-canvas" class="image-canvas" width="500px" height="500px">
         </canvas>
-            <!--<input type="canvas-text" style="left:100px;top:300px;width:600px" />-->
 
         <img src="assets/meme1.jpg" alt="hidden-image" class="hidden-image" id="hidden-image" style="display:none;"></img>
       </div>
 
-      <div id="inputs-zone">
-        <!--<div class="inputs-unit">
-          <input id="topline" placeholder="TYPE HERE" oninput="inputWrite(0,this)"></input>
-          <div id="text-props" class="text-props">
-            <button id="reset-text" class="text-props-button fa fa-trash" onclick="handleText(0,this)"></button>
-            <button id="text-color" class="text-props-button fa fa-tint" onclick="handleText(0,this)"></button>
-            <!--<button id="text-shadow-on"     class="text-props-button FAPLACE" onclick="handleText(0,this)">SHON</button>
-          <button id="text-shadow-off"    class="text-props-button FAPLACE" onclick="handleText(0,this)">SHOFF</button>-->
-            <!--<button id="select-font" class="text-props-button fa fa-font" onclick="handleText(0,this)"></button>
-            <button id="text-size-decrease" class="text-props-button fa fa-minus" onclick="handleText(0,this)"></button>
-            <button id="text-size-increase" class="text-props-button fa fa-plus" onclick="handleText(0,this)"></button>
-            <button id="align-left" class="text-props-button fa fa-align-left" onclick="handleText(0,this)"></button>
-            <button id="align-center" class="text-props-button fa fa-align-center" onclick="handleText(0,this)"></button>
-            <button id="align-right" class="text-props-button fa fa-align-right" onclick="handleText(0,this)"></button>
-          </div>
+      <div class="editor-controls">
+        <div id="inputs-zone">
+          <!--TEXT INPUT and TEXT PROPERTY BUTTNS : JS-->
         </div>
-
-       <div class="inputs-unit">
-          <input id="topline" placeholder="TYPE HERE" oninput="inputWrite(1,this)"></input>
-          <div id="text-props" class="text-props">
-            <button id="reset-text" class="text-props-button fa fa-trash" onclick="handleText(1,this)"></button>
-            <button id="text-color" class="text-props-button fa fa-tint" onclick="handleText(1,this)"></button>
-            <!--<button id="text-shadow-on"     class="text-props-button FAPLACE" onclick="handleText(1,this)">SHON</button>
-          <button id="text-shadow-off"    class="text-props-button FAPLACE" onclick="handleText(1,this)">SHOFF</button>-->
-            <!--<button id="select-font" class="text-props-button fa fa-font" onclick="handleText(1,this)"></button>
-            <button id="text-size-decrease" class="text-props-button fa fa-minus" onclick="handleText(1,this)"></button>
-            <button id="text-size-increase" class="text-props-button fa fa-plus" onclick="handleText(1,this)"></button>
-            <button id="align-left" class="text-props-button fa fa-align-left" onclick="handleText(1,this)"></button>
-            <button id="align-center" class="text-props-button fa fa-align-center" onclick="handleText(1,this)"></button>
-            <button id="align-right" class="text-props-button fa fa-align-right" onclick="handleText(1,this)"></button>
-          </div>-->
-        </div>
-
 
         <div class="editor-general-buttons">
           <button class="make-another-meme-button" onclick="hideElementById('image-editor')">Make Another Meme!</button>
           <a href="#" class="save-link" id="save-link" download="YourMeme.jpg"><button class="save-button" id="save-button">Download Your Meme!</button></a>
         </div>
       </div>
-
     </div>
 
-    <br><br>
-    <hr>
+  </div>
+
+  <br><br>
+  <hr>
 
 
 
 
-    <!--////////////////////////////  GALLERY SECTION  ////////////////////////////////-->
-    <div class="gallery-section flex align-center justify-center flex-wrap">
-      <div class="search-section">
-        <label>Search:</label>
-        <input class="search-box" type="text" name="search" placeholder="type here for images key words...">
-        <!--<div>
+  <!--////////////////////////////  GALLERY SECTION  ////////////////////////////////-->
+  <div class="gallery-section flex align-center justify-center flex-wrap">
+    <div class="search-section">
+      <label>Search:</label>
+      <input class="search-box" type="text" name="search" placeholder="type here for images key words...">
+      <!--<div>
           <label>Insert image url:</label>
           <input class="url-box" type="text" name="imageUrl" placeholder="type here for image url...">
         </div>-->
 
-        <div class="keywords-box">
-          <button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>
-        </div>
-
-        <!--<div> <input id="uploadedfile" type="file"></div>-->
+      <div class="keywords-box">
+        <button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>
       </div>
-      
-      <!--images inserted in js-->
-      <div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>
-      
+
+      <!--<div> <input id="uploadedfile" type="file"></div>-->
     </div>
+
+    <!--images inserted in js-->
+    <div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>
+
+  </div>
   </div>
 
-  <div class="about-section flex align-center justify-center flex-wrap"> 
+  <div class="about-section flex align-center justify-center flex-wrap">
     <img class="about-image" src="assets/about.jpg" alt="image1" class="img-responsive">
     <div class="about-text">
       <h1 class="main-title"> Assaf & Taly </h1>
-          <h2 class="secondary-title">Elders in process</h2>
-          <p class="about-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Integer venenatis quis odio eu auctor. Donec commodo, leo sed ultrices suscipit, 
-            nisi nibh facilisis urna, quis volutpat elit sapien id dui. Vestibulum rhoncus ut nulla ac fermentum. 
-            Etiam auctor, libero interdum consequat tempor, dolor urna tincidunt sapien, quis maximus nulla felis et purus. 
-            Vestibulum molestie facilisis lorem, ac dignissim neque porttitor ut. Ut tincidunt velit tortor. 
-            Quisque in efficitur mauris, a convallis metus. Sed mollis velit vitae turpis pellentesque, in gravida tortor malesuada. 
-            In eget lacinia justo, in semper mi. Vestibulum vitae libero erat. Phasellus quis rhoncus sapien, et sagittis quam.</p>
-        </div>
-        <div class="socials flex">
-            <a class="socials-facebook social-icons flex align-center justify-center" href="#"><img src="assets/fb.png"></a>
-            <a class="socials-twitter social-icons flex align-center justify-center" href="#"><img src="assets/tw.png"></a>
-            <a class="socials-behance social-icons flex align-center justify-center" href="#"><img src="assets/be.png"></a>
-            <a class="socials-dribble  social-icons flex align-center justify-center" href="#"><img src="assets/dr.png"></a>
-        </div>
+      <h2 class="secondary-title">Elders in process</h2>
+      <p class="about-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer venenatis quis odio eu auctor. Donec commodo, leo
+        sed ultrices suscipit, nisi nibh facilisis urna, quis volutpat elit sapien id dui. Vestibulum rhoncus ut nulla ac
+        fermentum. Etiam auctor, libero interdum consequat tempor, dolor urna tincidunt sapien, quis maximus nulla felis
+        et purus. Vestibulum molestie facilisis lorem, ac dignissim neque porttitor ut. Ut tincidunt velit tortor. Quisque
+        in efficitur mauris, a convallis metus. Sed mollis velit vitae turpis pellentesque, in gravida tortor malesuada.
+        In eget lacinia justo, in semper mi. Vestibulum vitae libero erat. Phasellus quis rhoncus sapien, et sagittis quam.</p>
     </div>
-    
-    <div class="contact-section">
-      <div class="inner-contact-container flex align-center justify-center flex-wrap">
-        <div class="left-part-contact">
-          <h1 class="contact-h1">Get in Touch</h1>
-          <h2 class="contact-h2">In order to get in touch use the contact form below:</h2>
-          <input class="contact-details block-input" type="text" name="Name" placeholder="Name(Required)">
-          <input class="contact-details block-input" type="email" name="email" placeholder="Email(Required)">
-          <input class="contact-details block-input" type="text" name="subject" placeholder="Subject">
-          <input class="contact-details block-input wide-input-contact" type="text" name="Name" placeholder="Write your message here...">
-          <button onclick="saveContactDeatails()" class="send-contact">SEND</button>
-        </div>
-        <div class="right-part-contact">
-          <p class="right-contact-paragraph"><span>Quisque Hendrerit:</span> purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. 
-            Proin sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae. </p>
-        </div>
-        
-      </div>
-
-    </div>
-
-    <footer class="footer-class flex">
-      <div class="footer-content flex">
-        <div class="logo"><a href="#">Memegen<span class="nav-selected-color">.</span></a></div>
-        <p class="all-rights"> © 2017 Memegen.me - All Rights Reserved </p>
-      </div>
-    </footer>
+    <div class="socials flex">
+      <a class="socials-facebook social-icons flex align-center justify-center" href="#"><img src="assets/fb.png"></a>
+      <a class="socials-twitter social-icons flex align-center justify-center" href="#"><img src="assets/tw.png"></a>
+      <a class="socials-behance social-icons flex align-center justify-center" href="#"><img src="assets/be.png"></a>
+      <a class="socials-dribble  social-icons flex align-center justify-center" href="#"><img src="assets/dr.png"></a>
     </div>
   </div>
 
+  <div class="contact-section">
+    <div class="inner-contact-container flex align-center justify-center flex-wrap">
+      <div class="left-part-contact">
+        <h1 class="contact-h1">Get in Touch</h1>
+        <h2 class="contact-h2">In order to get in touch use the contact form below:</h2>
+        <input class="contact-details block-input" type="text" name="Name" placeholder="Name(Required)">
+        <input class="contact-details block-input" type="email" name="email" placeholder="Email(Required)">
+        <input class="contact-details block-input" type="text" name="subject" placeholder="Subject">
+        <input class="contact-details block-input wide-input-contact" type="text" name="Name" placeholder="Write your message here...">
+        <button onclick="saveContactDeatails()" class="send-contact">SEND</button>
+      </div>
+      <div class="right-part-contact">
+        <p class="right-contact-paragraph"><span>Quisque Hendrerit:</span> purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin
+          sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae. </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer class="footer-class flex">
+    <div class="footer-content flex">
+      <div class="logo"><a href="#">Memegen<span class="nav-selected-color">.</span></a></div>
+      <p class="all-rights"> © 2017 Memegen.me - All Rights Reserved </p>
+    </div>
+  </footer>
+  </div>
+  </div>
+
   <script src="js/main.js"></script>
-  
+
 </body>
 
 </html>

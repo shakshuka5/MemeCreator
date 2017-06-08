@@ -240,10 +240,11 @@ header {
   margin-top: 20px;
   width: 100%;
   height: auto;
-  flex-direction: column;
+  flex-direction: row;
   transition: 0.5s; }
-  .image-editor * {
-    margin-top: 10px; }
+  @media (max-width: 700px) {
+    .image-editor {
+      flex-direction: column; } }
 
 .show-element {
   display: flex; }
@@ -254,35 +255,63 @@ header {
 .image-canvas {
   border: 6px solid darkgray; }
 
+.editor-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px; }
+  @media (max-width: 780px) {
+    .editor-controls {
+      margin-left: 20px; } }
+
 .input-lines {
   display: flex;
   flex-direction: column; }
+
+.editor-general-buttons {
+  margin-top: 15px; }
 
 .save-button {
   background-color: green;
   border-radius: 4px;
   color: white;
-  padding: 10px; }
+  padding: 10px;
+  min-width: 170px; }
 
 .make-another-meme-button {
-  background-color: lightblue;
+  background-color: darkgray;
   border-radius: 4px;
   color: white;
-  padding: 10px; }
+  padding: 10px;
+  min-width: 170px; }
 
 .text-props {
   display: flex; }
 
-.text-props-button {
+.text-prop {
   width: 100%;
-  height: 100%; }
+  height: 30px; }
 
 .inputs-unit {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-top: 10px; }
 
-.canvas-text {
-  z-index: 2; }
+.font-select {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  background-color: blue; }
+
+.drop-down-fonts {
+  background-image: url("font16.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: transparent; }
+  .drop-down-fonts options {
+    background-image: none;
+    background-color: white;
+    color: #000; }
 
 .about-section {
   transition: 0.5s;
