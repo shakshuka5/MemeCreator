@@ -37,7 +37,7 @@
 .search-section {
     padding: 5px;
     min-height: 120px;
-    background-color: yellowgreen;
+    // background-color: yellowgreen;
     border-bottom: 1px solid grey;
     width: 100%;
     text-align: left;
@@ -60,13 +60,14 @@
 }
 
 .keywords-box {
+    padding: 5px;
     border: 1px solid grey;
-    height: 100px;
     border-radius: 10px;
     margin-left: 10px;
 }
 
 .key-word{
+    display: inline-block;
     margin-right: 20px;
     cursor: pointer;
 }
@@ -78,4 +79,5 @@
     padding: 5px;
     border-radius: 10px;
     float: left;
+    margin: 5px;
 }
