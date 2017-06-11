@@ -6,7 +6,7 @@
   <title>Meme Generator</title>
   <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="dist/style.css">
-  <link rel="shortcut icon" type="image/png" href="assets/logo.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/m7c.png" />
 </head>
 
 <body onload="initPage()">
@@ -15,8 +15,8 @@
     <nav class="flex container space-between align-center">
 
       <logo class="logo">
-        <a href="#">Memegen<span class="nav-selected-color">.</span></a>
-        <!--<img src="assets/logoForSite.png" alt="" class="logo-image">   -->
+        <!--<a href="#">Memegen<span class="nav-selected-color">.</span></a>-->
+        <img src="assets/logo7bForSite.png" alt="" class="logo-image">   
         
       </logo>
 
@@ -51,7 +51,7 @@
       </div>
 
       <div class="editor-controls">
-        <div id="inputs-zone">
+        <div id="inputs-zone" class="inputs-zone">
           <!--TEXT INPUT and TEXT PROPERTY BUTTNS : JS-->
         </div>
 
@@ -75,9 +75,8 @@
     <div class="search-section container">
       <label>Search:</label>
       <input class="search-box" type="text" name="search" placeholder="Search images by key words">
-      <!--<button>Key Words</button>
-      <button>Clear</button>
-      <button>Upload</button>-->
+  
+      <!--<input id="uploadedfile" type="file"> // TBD upload file-->
        
     </div>
   
@@ -85,7 +84,8 @@
         <button class="touch-btn" onclick="setKeywordSearch(0)">Select word</button>
       </div>
 
-    <div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>
+   <!--<div class="images-container gallery-section flex align-center justify-center flex-wrap"></div>-->
+    <div class="images-container  flex align-center justify-center flex-wrap"></div>
 
   </div>
   </div>
@@ -131,8 +131,10 @@
   </div>
 
   <footer class="footer-class flex">
-    <div class="footer-content flex">
-      <div class="logo"><a href="#">Memegen<span class="nav-selected-color">.</span></a></div>
+    <div class="footer-content flex ">
+      <!--<div class="logo"><a href="#">Memegen<span class="nav-selected-color">.</span></a></div>-->
+      <img src="assets/logo7bForSite.png" alt="" class="logo-image">   
+
       <p class="all-rights"> © 2017 Memegen.me - All Rights Reserved </p>
     </div>
   </footer>

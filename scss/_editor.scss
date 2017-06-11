@@ -1,39 +1,105 @@
 
+// Overview: editor HTML elements - classes
+// body
+//     header
+//     .triangle-container
+//     .main-container
+// ------------------------------------------
+//         .image-editor
+//             .canvas-zone
+//                 .image-canvas
+//             .etitor-controls
+//                 .inputs-zone
+//                     .inputs-unit
+//                         .line-input
+//                         .text-props
+//                              .text-prop
+//                 .editor-general-buttons
+// ------------------------------------------
+
+    
+
+
 .image-editor{
 margin-top: 20px;
-//width: 100%;
+width: 100%;
 height: auto;
 flex-direction: row;
 transition:  0.5s;
 max-width: 980px;
-//@media (max-width: $mobile-screen-width) {
 @media (max-width: 980px) {
-    flex-direction: column;
+   flex-direction: column;
     }
 }
 .show-element{ display:flex;}
 .hide-element{ display:none;}
 
+// -----------------------------------
 
 .image-canvas{
      border: 6px solid darkgray;
  }
+// -----------------------------------
+
 
 .editor-controls{
     display:flex;
     flex-direction:column;
     justify-content: center;
+    justify-content: space-around;
     margin-left: 20px;
 
-    @media (max-width: 780px){
+    @media (max-width: 980px){
     margin-left: 0px;
     }
 }
 
- .input-lines{
+.inputs-zone{
+width: 100%;  
+}
+
+//-------------------------------------
+
+ .inputs-unit{
      display:flex;
-     flex-direction:column;
+     flex-direction: column;
+     margin-top: 10px;
  }
+
+.text-props{
+     display: flex;
+     width:100%;//n
+}
+
+.text-prop {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height:30px;
+ }
+
+// -------------
+
+.font-select {
+    margin:0;
+    padding:0;
+    font-size:0;
+    background-color: blue;
+}
+
+.drop-down-fonts {//improve - add JS
+    background-image: url('font16.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    color:transparent; // need to push from JS whick onclick
+    // options {
+    //     background-image:none;
+    //     background-color:white;
+    //     color: #000;
+    // }
+}
+
+// ----------------------------------
 
 .editor-general-buttons{
     margin-top:15px;
@@ -49,51 +115,25 @@ max-width: 980px;
     padding:10px;
     min-width: 170px;
     margin-left:10px;
-
+    border-width:0px;
+       &:hover { 
+        background-color:#00A000;
+       }
 }
  
  .make-another-meme-button{
-    background-color: darkgray;
+    background-color:#888;
     border-radius: 4px;
     color: white;
     padding:10px;
     min-width: 170px;
     margin-right:10px;
+    border-width:0px;
+        &:hover { 
+        background-color:#AAA;
+        }
 }
  
-.text-props{
-display: flex;
-}
- .text-prop {
-width: 100%;
-height:30px;
- }
-
- .inputs-unit{
-     display:flex;
-     flex-direction: column;
-     margin-top: 10px;
- }
-
-.font-select {
-    margin:0;
-    padding:0;
-    font-size:0;
-    background-color: blue;
-}
-
-
-.drop-down-fonts {//improve - add JS
-    background-image: url('font16.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    color:transparent; // need to push from JS whick onclick
-    options {
-        background-image:none;
-        background-color:white;
-        color: #000;
-    }
-}
 
 //////////////////////////////
 

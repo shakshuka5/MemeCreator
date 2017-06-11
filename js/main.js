@@ -2,30 +2,38 @@
 
 var LS_MEME_USER = 'ourMemeUserContact';
 
-var gImgs = [   { id: 0, url: 'assets/1.jpg', keywords: ['pink', 'hamudi'], isFiltered: true },
-                { id: 1, url: 'assets/2.jpg', keywords: ['hamudi', 'happy', 'hamudi'], isFiltered: true },
-                { id: 2, url: 'assets/3.jpg', keywords: ['hamudi', 'trump', 'happy', 'smugged','hamu'], isFiltered: true },
-                { id: 3, url: 'assets/4.jpg', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
-                { id: 4, url: 'assets/5.jpg', keywords: ['hamudi', 'alert'], isFiltered: true },
-                { id: 5, url: 'assets/6.jpg', keywords: ['hamudi', 'happy'], isFiltered: true },
-                { id: 6, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
-                { id: 7, url: 'assets/8.jpg', keywords: ['hamudi', 'serious', 'puki', 'man'], isFiltered: true },
-                { id: 8, url: 'assets/9.jpg', keywords: ['hamudi', 'silly', 'girl'], isFiltered: true },
-                { id: 9, url: 'assets/10.jpg', keywords: ['hamudi', 'man','yeh Baby!!'], isFiltered: true },
-                { id: 10, url: 'assets/11.jpg', keywords: ['hamudi', 'man', 'serious'], isFiltered: true },
-                { id: 11, url: 'assets/12.jpg', keywords: ['hamudi', 'man', 'serious', 'on the Phone...'], isFiltered: true },
-                { id: 12, url: 'assets/13.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
-                { id: 13, url: 'assets/14.jpg', keywords: ['hamudi', 'man', 'serious'], isFiltered: true },
-                { id: 14, url: 'assets/15.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
-                { id: 15, url: 'assets/16.jpg', keywords: ['hamudi', 'man'], isFiltered: true }];
+var gImgs = [{ id: 0, url: 'assets/1.jpg', keywords: ['pink', 'hamudi'], isFiltered: true },
+{ id: 1, url: 'assets/2.jpg', keywords: ['hamudi', 'happy', 'hamudi'], isFiltered: true },
+{ id: 2, url: 'assets/3.jpg', keywords: ['hamudi', 'trump', 'happy', 'smugged', 'hamu'], isFiltered: true },
+{ id: 3, url: 'assets/4.jpg', keywords: ['hamudi', 'toy', 'story'], isFiltered: true },
+{ id: 4, url: 'assets/5.jpg', keywords: ['hamudi', 'alert'], isFiltered: true },
+{ id: 5, url: 'assets/6.jpg', keywords: ['hamudi', 'happy'], isFiltered: true },
+{ id: 6, url: 'assets/7.jpg', keywords: ['hamudi', 'redhead'], isFiltered: true },
+{ id: 7, url: 'assets/8.jpg', keywords: ['hamudi', 'serious', 'puki', 'man'], isFiltered: true },
+{ id: 8, url: 'assets/9.jpg', keywords: ['hamudi', 'silly', 'girl'], isFiltered: true },
+{ id: 9, url: 'assets/10.jpg', keywords: ['hamudi', 'man', 'yeh Baby!!'], isFiltered: true },
+{ id: 10, url: 'assets/11.jpg', keywords: ['hamudi', 'man', 'serious'], isFiltered: true },
+{ id: 11, url: 'assets/12.jpg', keywords: ['hamudi', 'man', 'serious', 'on the Phone...'], isFiltered: true },
+{ id: 12, url: 'assets/13.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+{ id: 13, url: 'assets/14.jpg', keywords: ['hamudi', 'man', 'serious'], isFiltered: true },
+{ id: 14, url: 'assets/15.jpg', keywords: ['hamudi', 'man'], isFiltered: true },
+{ id: 15, url: 'assets/16.jpg', keywords: ['hamudi', 'man'], isFiltered: true }];
+
+///// Global vars /////////////////////////////////////////////// 
 
 var gMapKeys = {};
 var gState = { selectedImgId: -1, screen: {}, img: {}, canvas: {}, txts: [] };//UPDATED  var gCardsDisp;
 
+///// EDITOR SETTINGS  /////////////////////////////////////////
+var MEME_FONT_TYPE  = 'Impact, Charcoal, sans-serif';
+var MEME_FONT_SIZE  = 0.08; // as part of the canvas height
+var MEME_PADDING    = 0.03; // as part of the canvas height 
+/////////////////////////////////////////////////////////////////
+
 
 function initPage() {
     hideElementById('image-editor');//hide the EDITOR
-    
+
     createMapKeys();
     renderImageGallery();
     document.querySelector('.search-section').addEventListener('input', function (e) {
@@ -58,7 +66,6 @@ function renderImageGallery() {
     elImgContainer.innerHTML = strHTML;
 }
 
-
 function search4ImgsByKey() {
     var elInput = document.querySelector('.search-box');
     var searchStr = elInput.value;
@@ -73,8 +80,8 @@ function setKeywordSearch(displayed) {
     elSearchBox.value = '';
 
     var strHTML = elInput.innerHTML;
-    if(displayed){
-         strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>`;
+    if (displayed) {
+        strHTML = `<button class="touch-btn" onclick="setKeywordSearch(0)">Select word...</button>`;
     } else {
         var searchedWord = '';
         strHTML = `<button class="touch-btn" onclick="setKeywordSearch(1)">Close...</button>`;
@@ -158,47 +165,66 @@ function searchKeywordList(searchStr) {
 function saveContactDeatails() {
     console.log('saving to local storage...');
     var detailsStr = getUserDetail();
-    saveUsers (detailsStr);
+    saveUsers(detailsStr);
 }
 
 function getUserDetail() {
     var elInput = document.querySelectorAll('.contact-details');
     var contactStr = '';
-    for(var i=0; i<elInput.length; i++) {
+    for (var i = 0; i < elInput.length; i++) {
         contactStr += elInput[i].value + ' ';
     }
     return contactStr;
 }
 
 // saves the user details to localStorage using JSON.stringify()
-function saveUsers (detailsStr) {
+function saveUsers(detailsStr) {
     var usersJSON = JSON.stringify(detailsStr);
     localStorage.setItem(LS_MEME_USER, usersJSON);
 }
 
 
 
-//////////////////////////////////////////////////////////////////
-//////////                  EDITOR
-//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////                           EDITOR                       //////////////
+////////////////////////////////////////////////////////////////////////////////
+
+///// EDITOR NEW IMAGE SETUP 
 
 function editImage(selImg) {
     initEditor(selImg);
 }
 
+function initEditor(selImg) { //SETUP system with NEW image
+    showElementById('image-editor');
+    var elLine = document.getElementById('inputs-zone');
+    elLine.innerHTML = '';
+    gState.txts = [];
+    setScreenDetails(); 
+    setImgDetails(selImg);
+    setCanvasDetalis();
+    setNewTextLine(-1);  //create first line
+    setNewTextLine(0);   //create 2nd line
+    for (var idx = 0; idx < gState.txts.length; idx++) {//listeners to color pickers
+        createColorListener(idx);
+    }
+}
+
+
 
 function setScreenDetails() {
     gState.screen.width = 600;// shall be REAL screen width 
+ //   gState.screen.width = (screen.width < 700) ? 2.5 * screen.width : 600;// shall be REAL screen width 
+    console.log('screen width', gState.screen.width);
 }
 
 function setCanvasDetalis() {
     gState.canvas.el = document.getElementById("image-canvas");
     gState.canvas.ctx = gState.canvas.el.getContext('2d');
-    gState.canvas.width = gState.screen.width - 20;
+    gState.canvas.width = gState.screen.width-4;
     gState.canvas.height = Math.floor(gState.canvas.width * gState.img.aspectRatio);
     gState.canvas.el.width = gState.canvas.width;
     gState.canvas.el.height = gState.canvas.height;
-
 }
 
 function setImgDetails(selImg) {
@@ -215,64 +241,79 @@ function setImgDetails(selImg) {
 function textLineDefault() {
     var text = {
         text: '',
-        fontSize: 30,
-        fontType: 'Impact, Charcoal, sans-serif',
+        fontSize: MEME_FONT_SIZE*gState.canvas.height,
+        fontType: MEME_FONT_TYPE,
         color: 'white',
         textAlign: 'center',
         fillStyle: 'white',
         strokeStyle: 'black',
         lineWidth: 2,
-        textX: null,
+        textX: Math.floor(gState.canvas.width/2),
         textY: null
     };
     return text;
 }
 
+function setYOfAllLines() { // set the line indexes of all lines 
+    var lineY;
+    var paddingY    = MEME_PADDING*gState.canvas.height;
+    var fontHeight  = MEME_FONT_SIZE*gState.canvas.height;
+    var bottomRowY  = paddingY+fontHeight;
+    var topRowY     = gState.canvas.height-paddingY;
+    var textZoneY   = topRowY - bottomRowY;
+    var numOfLines  = gState.txts.length;
+    var lineGapY    = textZoneY/(numOfLines-1)
+    for (var idx = 0; idx < gState.txts.length; idx++) {
+        lineY = Math.floor(bottomRowY + lineGapY * (idx));
+        gState.txts[idx].textY = lineY;
+    }
+}
+
+function setNewTextLine(requestingLineIdx) { // set new line "below" the requesting line index
+    var newLineIdx = requestingLineIdx + 1;
+    gState.txts.splice(newLineIdx, 0, textLineDefault());
+    setYOfAllLines();
+    createHtmlLineControls();
+    renderCanvas();
+}
+
+/// EDITOR SCREEN PREPARING and SCREEN RENDERING FUNCTIONS
+
 function createHtmlLineControls() {
     var elLine = document.getElementById('inputs-zone');
     var strHtml = '';
-    for (var idx = 0; idx < gState.txts.length; idx++) {
+    for (var idx = 0; idx < gState.txts.length; idx++) {  /// need to move all "id" to another key (check what key can be set)
         strHtml +=
             `<div id="inputs-unit-${idx}" class="inputs-unit fa-lg">
-            <input id="line-${idx}" placeholder="TYPE HERE" oninput="inputWrite(${idx},this)"></input>
+            <input id="line-${idx}" class="line-input" placeholder="TYPE HERE" oninput="inputWrite(${idx},this)"></input>
             <div id="text-props-${idx}" class="text-props">
-                <!-- <button id="delete-row"         class="text-prop text-props-button fa fa-trash"       onclick="handleText(${idx},this)"></button>-->
-                <button id="text-up"         class="text-prop text-props-button fa fa-arrow-up"        onclick="handleText(${idx},this)"></button>
-                <button id="text-down"         class="text-prop text-props-button fa fa-arrow-down"        onclick="handleText(${idx},this)"></button>
-                <!-- <button id="text-color"         class="text-prop text-props-button fa fa-tint"        onclick="handleText(${idx},this)"></button>-->
+                <!-- <button id="delete-row"    class="text-prop text-props-button fa fa-trash"         onclick="handleText(${idx},this)"></button>-->
+                <button id="text-up"            class="text-prop text-props-button fa fa-arrow-up"      onclick="handleText(${idx},this)"></button>
+                <button id="text-down"          class="text-prop text-props-button fa fa-arrow-down"    onclick="handleText(${idx},this)"></button>
+                <!-- <button id="text-color"    class="text-prop text-props-button fa fa-tint"          onclick="handleText(${idx},this)"></button>-->
                 <input type="color" id="color-picker-${idx}" class="text-prop" name="color" form="frmRegister" />
-                <!--<button id="text-shadow-on" class="text-prop text-props-button FAPLACE"           onclick="handleText(${idx},this)">SHON</button>
-                <button id="text-shadow-off"    class="text-prop text-props-button FAPLACE"         onclick="handleText(${idx},this)">SHOFF</button>
-                <!--<button id="select-font"        class="text-prop text-props-button fa fa-font"      onclick="handleText(${idx},this)"></button>
-                <button id="select-font"        class="text-prop text-props-button fa fa-font"      onclick="clickSelect(${idx},this)"></button>-->
-                <select  id="font-dropdown-${idx}"  class="drop-down-fonts text-prop" onchange="dropSelectTest(${idx},this.value)">-->
-                <option class="font-impact" value="Impact, Charcoal, sans-serif">Impact</option>
-                <option class="font-courier" value="Courier, Charcoal, sans-serif">Courier</option>
-                <option class="font-arial-black" value="Arial Black, Charcoal, sans-serif">Arial Black</option>
-                <option class="font-comic-sans-ms" value="Comic Sans MS, Charcoal, sans-serif">Comic Sans Ms</option>
+                <!--<button id="text-shadow-on" class="text-prop text-props-button FAPLACE"             onclick="handleText(${idx},this)">SHON</button>
+                <button id="text-shadow-off"    class="text-prop text-props-button FAPLACE"             onclick="handleText(${idx},this)">SHOFF</button>
+                <!--<button id="select-font"    class="text-prop text-props-button fa fa-font"          onclick="handleText(${idx},this)"></button>
+                <button id="select-font"        class="text-prop text-props-button fa fa-font"          onclick="clickSelect(${idx},this)"></button>-->
+                <select id="font-dropdown-${idx}"  class="drop-down-fonts text-prop" onclick="dropdownClicked(${idx},this)" onchange="setFontType(${idx},this.value)">
+                    <option class="font-impact" value="Impact, Charcoal, sans-serif">Impact</option>
+                    <option class="font-courier" value="Courier, Charcoal, sans-serif">Courier</option>
+                    <option class="font-arial-black" value="Arial Black, Charcoal, sans-serif">Arial Black</option>
+                    <option class="font-comic-sans-ms" value="Comic Sans MS, Charcoal, sans-serif">Comic Sans Ms</option>
                 </select>   
-                <button id="text-size-decrease" class="text-prop text-props-button fa fa-minus"       onclick="handleText(${idx},this)"></button>
-                <button id="text-size-increase" class="text-prop text-props-button fa fa-plus"        onclick="handleText(${idx},this)"></button>
-                <button id="align-left"         class="text-prop text-props-button fa fa-align-left"  onclick="handleText(${idx},this)"></button>
-                <button id="align-center"       class="text-prop text-props-button fa fa-align-center"onclick="handleText(${idx},this)"></button>
-                <button id="align-right"        class="text-prop text-props-button fa fa-align-right" onclick="handleText(${idx},this)"></button> 
+                <button id="text-size-decrease" class="text-prop text-props-button fa fa-minus"         onclick="handleText(${idx},this)"></button>
+                <button id="text-size-increase" class="text-prop text-props-button fa fa-plus"          onclick="handleText(${idx},this)"></button>
+                <button id="align-left"         class="text-prop text-props-button fa fa-align-left"    onclick="handleText(${idx},this)"></button>
+                <button id="align-center"       class="text-prop text-props-button fa fa-align-center"  onclick="handleText(${idx},this)"></button>
+                <button id="align-right"        class="text-prop text-props-button fa fa-align-right"   onclick="handleText(${idx},this)"></button> 
             </div>
         </div>`
     }
     elLine.innerHTML = strHtml;
 }
 
-function getColorVal(colorValue) {
-
-    alert(colorValue);
-}
-
-
-function clickSelect(idx, elObject) {
-    var eldrop = document.getElementById(`font-dropdown-${idx}`);
-    console.log(eldrop);
-    eldrop.click();
-}
+ 
 
 
 function drawImageOnCanvas() {
@@ -284,49 +325,7 @@ function drawImageOnCanvas() {
     var ctx = gState.canvas.ctx;
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.drawImage(elImg, imgX, imgY, canvasWidth, canvasHeight);
-    console.log(canvasWidth, canvasHeight, elImg, ctx)
 }
-
-
-function initEditor(selImg) { //load start
-    showElementById('image-editor');
-    var elLine = document.getElementById('inputs-zone');
-    elLine.innerHTML = '';
-    gState.txts = [];
-    gState.txts.push(textLineDefault());
-    gState.txts.push(textLineDefault());
-    setScreenDetails(); // move to to of file
-    setImgDetails(selImg);
-    setCanvasDetalis();
-    gState.txts[0].textX = gState.canvas.width / 2; // move the two pushes above and therse 4 to another function 
-    gState.txts[0].textY = 50;
-    gState.txts[1].textX = gState.canvas.width / 2;
-    gState.txts[1].textY = gState.canvas.height - 20;
-    drawImageOnCanvas();
-    createHtmlLineControls();
-    renderCanvas();
-
-    //improve to all lines
-    document.getElementById(`color-picker-0`).addEventListener('input', function (e) {
-        gState.txts[0].fillStyle = e.target.value;
-        renderCanvas();
-    }, false);
-    document.getElementById(`color-picker-1`).addEventListener('input', function (e) {
-        gState.txts[1].fillStyle = e.target.value;
-        renderCanvas();
-    }, false);
-
-}
-
-function findFontSize(ctx, text) { //adjust font size to line - might not use
-    var f = gFontSize; // Font size (in pt)
-    for (; f >= 0; f -= 1) {
-        ctx.font = "bold " + f + "pt " + gFontType;
-        if (ctx.measureText(text).width < canvasWidth - 10) {
-            return f;
-        }
-    }
-};
 
 function inputWrite(lineIdx, elText) {
     gState.txts[lineIdx].text = elText.value;
@@ -350,6 +349,8 @@ function renderCanvas() {
         document.getElementById('save-link').href = dataURL;
     }
 }
+
+///// Text properties change - hadling functions
 
 function handleText(lineIdx, elButton) {
     console.log('switch case elbutton', elButton.id, elButton);
@@ -391,16 +392,41 @@ function handleText(lineIdx, elButton) {
 
 }
 
-function dropSelectTest(lineIdx, font) {
-    console.log(lineIdx, font)
-    gState.txts[lineIdx].fontType = font;
-    renderCanvas();
 
-    // document.getElementById(`font-dropdown-${idx}`).value;
-    // console.log(elObject, document.getElementById("mySelect").value);
+function createColorListener(idx) {
+    document.getElementById(`color-picker-${idx}`).addEventListener('input', function (e) {
+        gState.txts[idx].fillStyle = e.target.value;
+        renderCanvas();
+    }, false);
 }
 
-///////////////////////// UTILS ////////////////
+function setFontType(lineIdx, font) {
+    gState.txts[lineIdx].fontType = font;
+    // gElFont[lineIdx].style.color = 'transparent';//"hack" to dropdown - didnt work well - abort
+    // gDropdownInSelect[id] = false;
+    renderCanvas();
+}
+
+// var gDropdownInSelect = []; // didnt work wel - abort
+// //var gDropdownInSelect = false;
+// var gElFont =[]; // tbd make local
+
+// function dropdownClicked(id,el){
+// console.log('ENTER FUNC',gDropdownInSelect[id],id,el);
+// //    var el = document.getElementById(el.id);
+//      gElFont[id] = document.getElementById(el.id);
+//     if(!gDropdownInSelect[id]) {
+//         gElFont[id].style.color = '#000';
+//         gDropdownInSelect[id] = true;
+//     }
+//     else if (gDropdownInSelect[id]){
+//         gElFont[id].style.color = 'transparent';
+//         gDropdownInSelect[id] = false;
+//     }
+// }
+
+
+/////     UTILS     ////////////////
 
 function hideElementById(elementId) {
     console.log('hide ele by ID:', elementId);
@@ -417,3 +443,12 @@ function showElementById(elementId) {
     el.classList.add('show-element');
 }
 
+// function findFontSize(ctx, text) { //NOT IN USE - FOR FUTURE 
+//     var f = gFontSize; // Font size (in pt)
+//     for (; f >= 0; f -= 1) {
+//         ctx.font = "bold " + f + "pt " + gFontType;
+//         if (ctx.measureText(text).width < canvasWidth - 10) {
+//             return f;
+//         }
+//     }
+// }
